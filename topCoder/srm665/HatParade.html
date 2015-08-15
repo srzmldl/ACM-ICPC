@@ -1,0 +1,42 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Mirko is a magician.
+He has decided to perform a trick that he wants you to solve.
+The trick consists of three steps:
+
+<ol>
+<li>Mirko takes some mutually distinct hats and arranges them into a line.</li>
+<li>He picks up a red marker and uses it to write a positive integer onto each hat.</li>
+<li>Then, he picks up a blue marker and uses it to write another positive integer onto each hat. For each hat, the blue number is either the prefix sum or the suffix sum of all red numbers up to, and including, that hat.</li>
+</ol>
+
+For example, suppose he picked up four hats.
+Let's call them A, B, C, and D, in their order from step 1.
+In step 2, he wrote the red number 10 onto hat A, 20 onto B, 30 onto C, and 40 onto D.
+Here is one possibility what he could write in step 3:
+<ul>
+<li>For hat A, he chose the prefix sum, i.e., the sum of all red numbers from the beginning to this hat, inclusive. In this case, the sum is 10.</li>
+<li>For hat B, he chose the suffix sum, i.e., the sum of all red numbers from this hat to the end, inclusive. In this case, the sum is 20+30+40 = 90.</li>
+<li>For hat C, he also chose the suffix sum: 30+40 = 70.</li>
+<li>For hat D, he chose the prefix sum: 10+20+30+40 = 100.</li>
+</ul>
+After step 3 he now has four hats, each with one red and one blue number.
+For example, hat C now has the red number 30 and the blue number 70.
+</p>
+<br></br><br></br>
+<p>
+Mirko has shown you some shuffled hats, each with a red and a blue number.
+Then he has asked you the following question: 
+"How many different orders of these hats are consistent with the trick described above?"
+</p>
+<br></br>
+<p>
+You are given the red numbers on all hats in the vector &lt;int&gt; <b>value</b>, and all the blue numbers in the vector &lt;int&gt; <b>sum</b>.
+For each valid i, the red number <b>value</b>[i] is on the same hat as the blue number <b>sum</b>[i].
+Let X be the total number of orders that are consistent with the trick.
+Return the value (X modulo 1,000,000,007).
+Note that all hats are distinct, even if they have both the same red and the same blue number.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>HatParade</td></tr><tr><td>Method:</td><td>getPermutation</td></tr><tr><td>Parameters:</td><td>vector &lt;int&gt;, vector &lt;int&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int getPermutation(vector &lt;int&gt; value, vector &lt;int&gt; sum)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>value</b> will contain between 1 and 500 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>sum</b> will contain the same number of elements as <b>value</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>value</b> will be between 1 and 10^9, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>sum</b> will be between 1 and 10^9, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2, 1, 3}</pre></td></tr><tr><td><pre>{3, 1, 6}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">There are two valid orders.
+In one of them, the red numbers were in order: 1, 2, 3.
+For this order all blue numbers correspond to prefix sums: 1 = 1, 1+2 = 3, and 1+2+3 = 6.
+The second valid order is the reverse of the first one.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1, 1, 1, 1}</pre></td></tr><tr><td><pre>{9, 1, 2, 3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">Regardless of which order we choose, the blue number 9 will never be a prefix sum or a suffix sum of some red numbers.
+Hence, in this case there are no orders that would be consistent with Mirko's trick.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{4, 4, 4, 4}</pre></td></tr><tr><td><pre>{16, 16, 8, 8}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">The first and second hats belong on the ends. The third and fourth hats belong in the middle. Any such ordering that maintains these properties results in a correct sorting.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1, 2, 3, 4, 5, 6, 7}</pre></td></tr><tr><td><pre>{1, 27, 6, 22, 18, 21, 7}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">Placing the hats in order or in reverse order will yield the correct sums.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

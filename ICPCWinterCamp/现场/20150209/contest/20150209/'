@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+
+#define REP(i, a) for (int i = 0; i < (int) (a); i ++)
+#define REPP(i, a, b) for (int i = (int) (a); i <= (int) (b); i ++)
+#define MST(a, b) memset(a, b, sizeof(a))
+
+using namespace std;
+
+int mp[6][6];
+string tmp[6];
+string s;
+map<char, int> g;
+
+int getx(int x) {
+	return x / 6;
+}
+
+int gety(int x) {
+	return x % 6;
+}
+
+vector<int> ans;
+
+int main() {
+	ios :: sync_with_stdio(0);
+	freopen("B.in", "r", stdin);
+	
+	REP(i, 26) {
+		s[i] = 'a' + i;
+		g[s[i]] = i;
+	}
+	REP(i, 10) {
+		g[i + '0'] = i + 26;
+	}
+	REP(i, 6) {
+		cin >> tmp[i];
+	}
+	REP(i, 6) REP(j, 6) {
+		mp[i][j] = g[tmp[i][j]];
+	}
+	REP(i, 6) {
+		REP(j, 6) {
+			cout << mp[i][j] << '\t';
+		}
+		cout << endl;
+	}
+
+	
+
+	return 0;
+}
+

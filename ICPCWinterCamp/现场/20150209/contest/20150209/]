@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+
+#define REP(i, a) for (int i = 0; i < (int) (a); i ++)
+#define REPP(i, a, b) for (int i = (int) (a); i <= (int) (b); i ++)
+#define MST(a, b) memset(a, b, sizeof(a))
+
+using namespace std;
+
+const int N = 2005;
+const int MO = 4234567;
+unordered_map<int, int> mp[N];
+int a[N];
+
+int fi[MO], en[MO], step[MO];
+int dp[MO];
+
+void add(int x, int d) {
+	ne[++edge] = fi[x];
+	fi[x] = edge;
+	step[edge] = d;
+}
+
+int myhash(int x, int d) {
+	return 1LL * x * x % MO * d % MO;
+}
+
+int gethash(int x, int d) {
+	int tmp = 1LL * x * x % MO * d % MO;
+	for (int go = fi[tmp]; go && step[go] != d; go = ne[go]);
+	return go;
+}
+
+int main() {
+	int t;
+	scanf("%d", &t);
+	while (t--) {
+		int n;
+		scanf("%d", &n);
+		REPP(i, 1, n) {
+			scanf("%d", a + i);
+		}
+		sort(a + 1, a + n + 1);
+		REPP(i, 1, n) {
+			REPP(j, 1, i - 1) {
+				int x = a[i], y = a[j];
+				int d = abs(x - y);
+				int &ans = dp[gethash(x, d)];
+				ans = max(ans, dp[gethash(j, d)] + 1);
+			}
+			REPP(j, i, n) {
+				int x = a[i], y = a[i];
+				int d = abs(x - y);
+				int tmp = myhash(i, d);
+				add(tmp, d);
+
+			}
+		}
+		int ans = 1;
+		REPP(i, 1, n) {
+			for (auto y: mp[i]) {
+				ans = max(ans, y.second);
+			}
+		}
+		cout << ans << endl;
+		REPP(i, 1, n) mp[i].clear();
+	}
+
+	return 0;
+}

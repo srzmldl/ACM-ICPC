@@ -1,0 +1,50 @@
+\documentclass{article}
+\title {Obsessive-compulsive disorder}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{center}
+	Time Limit: 1000MS\\
+	Memory Limit: 50KB
+	\end{center}
+	\section*{Description}
+	\paragraph*{•}
+	Obsessive–compulsive disorder (OCD) is an anxiety disorder characterized by intrusive thoughts that produce uneasiness, apprehension, fear or worry (obsessions), repetitive behaviors aimed at reducing the associated anxiety (compulsions), or a combination of such obsessions and compulsions. Symptoms of the disorder include excessive washing or cleaning, repeated checking, extreme hoarding, preoccupation with sexual, violent or religious thoughts, relationship-related obsessions, aversion to particular numbers and nervous rituals such as opening and closing a door a certain number of times before entering or leaving a room. These symptoms are time-consuming, might result in loss of relationships with others, and often cause severe emotional and financial distress. The acts of those who have OCD may appear paranoid and potentially psychotic. However, people with OCD generally recognize their obsessions and compulsions as irrational and may become further distressed by this realization. Despite the irrational behaviour, OCD is associated with high verbal IQ.
+	\paragraph*{•}
+	Unforutunately, Joker Poker has been suffering from this terrible anxiety disorder since very young. There is exactly N places in the USTC and exactly one directed edge between every two places. As a result of OCD, Joker Poker has to choose 3 places A, B and C in the USTC, and walks in this cycle A${\rightarrow}$B${\rightarrow}$C${\rightarrow}$A for 110 times. If he couldn't find such a cycle contains exactly 3 places, he would  commit suicide in a very painful and scary way. So you have to tell the principal if Joker Poker could be alive in the USTC.
+	
+	\section*{Input}
+	\paragraph*{•}
+	
+	There are multiple test cases. Each test case starts with a line containing an integer N (1  ${\leq}$ N  ${\leq}$ 1000) which is the number of places in the USTC, in the next N lines contain the adjacency matrix A of the relationship(without spaces). A{ij} = 1 means there is a directed edge from the i-th place to j-th place. Otherwise, A{ij} = 0. It's guaranteed that A{ii} = 0, A{ij} $\neq$ A{ji}.
+	\paragraph*{•}
+	The last line is a 0 indicates the end of the input. 
+	
+	\section*{Output}
+	\paragraph*{•}
+	For each case, print “YES”, if Joker Poker could be alive in the USTC. Otherwise, please print “NO”. 
+	\paragraph{•}
+	Take the sample output for more details.
+	
+	\section*{Sample Input}
+	3 \\
+	011 \\
+	001 \\
+	000 \\
+	3	\\
+	010	\\
+	001	\\
+	100	\\
+	0\\
+	
+	\section*{Sample Output}
+	NO\\
+	YES\\
+	
+	\section*{Hint}
+	\paragraph*{•}
+	SMALL MEMORY LIMIT.
+	
+	
+	
+\end{document}

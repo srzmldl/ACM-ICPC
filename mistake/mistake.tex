@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{graphicx}                % 嵌入png图像
+\usepackage{color,xcolor}            % 支持彩色文本、底色、文本框等
+\setCJKmainfont{Microsoft YaHei} 
+\XeTeXlinebreaklocale "zh"
+\title{ \textbf{ MISTAKE}}
+\author{ 李顶龙}
+\date{}
+\begin{document}
+
+\maketitle
+\section{ cdq分治}
+\begin{itemize}
+	\item 不要排结构体，因为排结构体到时候还要排回来。
+	\item 线段树打时间戳不要memsize().
+	\item 第二维排序的时候一定要双关键字排序
+\end{itemize}
+
+\section{ 朱刘算法}
+
+\begin{itemize}
+
+\item vis[i] = i 
+\item 最后更新边的时候注意顺序
+\item 根节点的处理要很小心
+\item root缩点之后标号也要变化
+
+\end{itemize}
+
+\section{二分图}
+\begin{itemize}
+
+\item DAG最小路径覆盖（最小的不相交路径覆盖所有顶）=|V(G)|-最多的不相邻的边：拆点之后u->v的边变为Xu->Yv,再求最大匹配即可（不相交的边尽量多）
+\item 最大匹配=最小点覆盖；
+\item 独立数=点数-匹配数=最小边覆盖
+\item 求有向无环图最小可相交路径，可以先求floyed求传递闭包，转化成最小不可相交路径
+\end{itemize}
+
+\section{ 倍增}
+\begin{itemize}
+
+\item 忘了先化到同一深度
+\item 最后判断u，v不相等
+if (u != v)
+	ans = max(ans, max(big[u][0], big[v][0]));
+\item 倍增数组里边的下标一定要注意
+\end{itemize}
+
+\end{document}
+
+
+

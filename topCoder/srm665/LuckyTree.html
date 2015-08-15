@@ -1,0 +1,48 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Cat loves making trees.
+Cat's friend Dog will have a birthday soon, so Cat has decided to make a special tree for Dog.
+</p>
+<br></br>
+<p>
+Cat likes the numbers 4 and 7.
+Therefore, the weight of each edge in the tree will be either 4 or 7.
+</p>
+<br></br>
+<p>
+Dog likes balance.
+A simple non-empty path in the tree is balanced if it contains the same number of weight-4 and weight-7 edges.
+(Note that an empty path is not balanced.)
+Direction does not matter: a path from X to Y is the same as a path from Y to X.
+</p>
+<br></br>
+<p>
+Dog's favorite number is <b>favorite</b>.
+Cat would like to encode this number into the tree as the number of balanced paths it contains.
+</p>
+<br></br>
+<p>
+You are given the int <b>favorite</b>.
+Find a tree that contains at most 51 vertices and has all the above properties.
+Return a vector &lt;int&gt; containing a description of the tree in the format specified below.
+If there are many such trees, you may return any of them.
+If there are no such trees, return an empty vector &lt;int&gt; instead.
+</p>
+<br></br>
+<p>
+Suppose that you want to return a tree with V vertices. 
+(Note that V must be between 1 and 51, inclusive.)
+First, label those vertices 0 through V-1.
+Then, return a vector &lt;int&gt; X with exactly 3V-2 elements.
+X[0] should be the number of vertices.
+The rest of X should be the list of edges.
+More precisely:
+For each edge in your tree there must be an i between 0 and V-2, inclusive, such that X[3*i+1] and X[3*i+2] are the vertices connected by that edge and X[3*i+3] is the weight of the edge: either 4 or 7.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>LuckyTree</td></tr><tr><td>Method:</td><td>construct</td></tr><tr><td>Parameters:</td><td>int</td></tr><tr><td>Returns:</td><td>vector &lt;int&gt;</td></tr><tr><td>Method signature:</td><td>vector &lt;int&gt; construct(int favorite)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>favorite</b> will be between 1 and 1275, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: {3, 0, 1, 4, 1, 2, 7 }</pre></td></tr><tr><td><table><tr><td colspan="2">We are looking for any tree with exactly 1 balanced path.
+The return value describes a tree with three vertices.
+There are two edges: 0-1 (weight 4) and 1-2 (weight 7).
+The single balanced path is the path between vertices 0 and 2.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>64</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{17, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0,
+ 8, 4, 0, 9, 7, 0, 10, 7, 0, 11, 7, 0, 12, 7, 0, 13, 7, 0, 14, 7, 0, 15,
+ 7, 0, 16, 7 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>47</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{15, 1, 12, 4, 1, 11, 4, 0, 1, 7, 0, 2, 7, 2, 10, 4, 2, 9, 4, 0, 4, 4,
+ 0, 3, 4, 3, 7, 7, 3, 8, 7, 4, 5, 7, 4, 6, 7, 12, 13, 7, 13, 14, 4 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>1275</pre></td></tr></table></td></tr><tr><td><pre>Returns: { }</pre></td></tr><tr><td><table><tr><td colspan="2">It is not possible to create a tree with 1275 balanced paths using only 51 nodes.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

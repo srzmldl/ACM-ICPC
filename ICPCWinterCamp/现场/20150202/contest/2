@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+
+#define REP(i, a) for (int i = 0; i < (int) (a); i ++)
+#define REPP(i, a, b) for (int i = (int) (a); i <= (int) (b); i ++)
+#define MST(a, b) memset(a, b, sizeof(a))
+
+using namespace std;
+
+const int N = 200005;
+
+long long cnt[2][N], tail[N];
+int fail[N];
+
+string s, t;
+
+int presolve() {
+	bool a = 1;
+	REP(i, t.size()) {
+		a = a && (t[i] == 'a');
+		if (!a) return -1;
+	}
+	int cnt = 0;
+	REP(i, s.size()) {
+		int pre = i, j = i;
+		while (j < (int) s.size() && s[j] == 'a') j++;
+		cnt = max(cnt, j - pre);
+		i = j + 1;
+	}
+	int ans = 0;
+	while (cnt < (int) t.size()) {
+		ans++;
+		cnt <<= 1;
+	}
+	return ans;
+}
+
+int cnts, cntt;
+
+void init() {
+	int n = s.size();
+	REP(i, n) {
+		int tmp = 0;
+		while (i < n && s[i] == 'a') tmp++, i++;
+		cnt[0][cnts++] = tmp + (i < n - 1);
+	}
+	 n = s.size();
+	REP(i, n) {
+		int tmp = 0;
+		while (i < n && s[i] == 'a') tmp++, i++;
+		cnt[0][cnts++] = tmp + (i < n - 1);
+	}
+
+}
+
+void getfail() {
+	fail[0] = fail[1] = 0;
+	REPP(i, 1, t.size() - 1) {
+		int j = fail[i];
+		while (t[j] != t[i]) j = fail[j];
+		fail[i + 1] = t[j] == t[i] ? j + 1 : 0;
+	}
+}
+
+int main() {
+	ios :: sync_with_stdio(0);
+	cin >> s >> t;
+	int tmp = presolve();
+	if (tmp) {
+		cout << tmp << endl;
+		return 0;
+	}
+	else {
+		init();
+		getfail();
+		REP(i, 20) {
+
+		}
+
+	}
+
+	return 0;
+}
+
