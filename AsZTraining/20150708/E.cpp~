@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define MAXN 1123456
+
+using namespace std;
+
+int ans[MAXN];
+
+int cut(int u, int v, int arr[])
+{
+    if (v / 2 < u)
+    {
+        arr[0] = 1;
+        arr[1] = min(u, v - 1);
+        arr[2] = max(u, v - 1);
+        return min(u, v - 1);
+    }
+}
+
+int main()
+{
+    freopen("eating.in", "r", stdin);
+    freopen("eating.out", "w", stdout);
+    for (;;)
+    {
+        int a[3], tot = 0;
+        scanf("%d%d%d", a, a + 1, a + 2);
+        for(; a[2] > 1;)
+        {
+            if (a[0] + a[1] + a[2] == 0) break;
+            sort(a, a + 3);
+            int tmpArr[3];
+            int u1 = cut(a[0], a[2], tmpArr); //secure a[2], eat a[1], wait to be cut
+            int u2 = cut(a[0], a[1], tmpArr); //secure a[0], eat a[2], wait to be cut
+            if (u1 < u2)
+            {
+                ans[tot++] = a[2];
+                cut(a[0], a[1], tmpArr);
+                for (int i = 0; i < 3; ++i)
+                    a[i] = tmpArr[i];
+            } else
+            {
+                ans[tot++] = a[1];
+                cut(a[0], a[2], tmpArr);
+                for (int i = 0; i < 3; ++i)
+                    a[i] = tmpArr[i];
+            }
+            ans[tot++] = 1;
+        }
+    }
+    return 0;
+}

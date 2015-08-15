@@ -13,17 +13,12 @@ struct node
 {
     int x, y, z, f;
 } a[MAXN];
-int 
+
 
 int ok(node A, node B)
 {
     return A.x <= B.x && A.y <= B.y && A.x <= B.z;
 }
-int ok(node A, node B)
-{
-    return A.x <= B.x && A.y <= B.y && A.x <= B.z;
-}
-
 
 void link(int u, int v)
 {
