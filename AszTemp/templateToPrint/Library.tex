@@ -1,0 +1,148 @@
+\documentclass[landscape]{report}
+\usepackage[body={26cm,18cm}, top=1.0cm, left=2.5cm]{geometry}
+\geometry{papersize={29.7cm, 21.0cm}}
+\usepackage{multicol}
+\usepackage[toc]{multitoc}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\newfontfamily\monaco{Monaco}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{minitoc}
+\setCJKmainfont{Microsoft YaHei}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\small\monaco,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  %frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  otherkeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\monaco, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+}
+
+\newcommand{\includecode}[2][c]{\lstinputlisting[caption=#2, escapechar=, language=#1]{#2}}
+
+\begin{document} 
+\begin{flushleft}
+
+\dominitoc[n]
+\title{ACM/ICPC Template}
+\author{AsZ VincentLDL}
+\date{\today}
+\maketitle
+\setcounter{secnumdepth}{3}
+\tableofcontents
+\newpage
+\begin{multicols}{2}
+\chapter{ java}
+\section{ 读写}
+\section{ 高精}
+
+\chapter{ dp 优化}
+\section{ 决策单调性优化}
+\begin{itemize}
+\item 形式： f[i] = f[j] + w[j, i]形式决策单调。
+\item 一般打表找规律看决策是否单调。
+\item 四边形不等式：w[i,j]+w[i + 1, j + 1] <= w[i + 1, j] + w[i + 1, j],则满足决策单调性。
+\item 有时候不满足决策单调性，但是去掉完全不合法状态之后却可以满足。
+\end{itemize}
+ \includecode[c++]{hnoi2008toys.cpp}   
+
+%\subsection{cout}
+\section{ 单调队列优化以及写仙人掌图}
+\begin{itemize}
+\item 题目背景：仙人掌图上最长链
+\item 形式：f[i] = max(g[j]) + w[i]，w[i]单调, 可见，如果j<k, g[j]<g[k], 则j可以直接不考虑，所以此时维护g单调减的队列即可。
+\item 仙人掌图找环：首先形成bfs树，发现有环，记pt，ph，然后选pt沿着pre走到跟，一路打时间戳；再从ph沿着pre走，就可以找到lca。pt，ph到lca的路径，加上pt-->ph就是基环了。
+\end{itemize}
+\includecode[c++]{ioi2008Island.cpp}
+\section{  斜率优化}
+\begin{itemize}
+
+\item f[i] = min(a[i] * x[j] + b[i] * y[j])
+\item 更好的理解：设P=f[i],则 y = (-a/b)x + P/b. 求满足要求的最小截距。或者通过各种转化，最优决策就是从无穷远朝原点移动，第一个碰上的点为最优决策点。
+\item 很好的性质：所有最优决策一定在当前所有点构成的凸包上。（例如，在最优决策点划一条相应斜率的线，其余点均在该线上方，）
+\end{itemize} 
+\subsection{ 斜率以及x维都单调}
+\paragraph{ }
+想像斜率越来越大的直线往y正方向移动，第i次移动首次碰上k。对于以后的
+    决策，因为斜率更大，那么在k之前，第i次移动没有碰上的点必然再也用不上了，
+    所以可以维护一个单调队列。 下面例题是：把一个序列切开，每个部分权值是和平方加常数，求权值和最小值
+    
+\includecode[c++]{hdu3507.cpp}
+
+\subsection{ 随便什么情况：cdq分治优化}
+
+\begin{itemize}
+\item 排序的顺序，凸壳的方向写之前一定要画清楚。
+\item 这里归并排一维的序可以节省一个log的复杂度
+\item cdq分治的顺序至关重要，千万不能乱。
+\item  f[i]表示第i天手上的券全换成现金最多多少, 其中x[j],y[j]分别表示用f[j]的钱换成A，B券分别能有多少。 
+\item  f[i] = max(max(A[i] * x[j] + B[i] * x[j], f[j]))
+\item 就是经典的斜率优化问题咯。不用平衡树的话可以离线用cdq分治。先按照－A[i]/B[i]排序（具体大小顺序画一画就知道了）。
+      solve(l, r)时需要按照下标lab大小分为两部分。然后solve(l,mid),同时主义归并把递散维x排好序。l～mid至mid＋1~r 转移.
+      最后solve(mid + 1, r)，接着归并排好x就行了。
+\end{itemize}
+
+\includecode[c++]{cash.cpp}
+\chapter{ 图论}
+\section{ tarjan}
+\subsection{ 2-sat}
+\subsection{ 割顶，点双联通分量}
+\subsection{ 桥，边双联通分量}
+\section{ 平面图}
+farmland那道题
+\section{网络流}
+\subsection{ dinic}
+\subsection{ 费用流}
+\subsection{ 常见模型}
+\section{弦图}
+\section{最小树形图}
+
+
+\chapter{数据结构}
+\section{splay}
+\section{lct}
+\section{可持久化线段树}
+\section{ 点分治}
+\section{ 树链剖分}
+
+\chapter{字符串}
+\section{ 后缀数组}
+\section{后缀自动机}
+
+\chapter{ 其他算法}
+\section{ cdq 分治与读入优化}
+\begin{itemize}
+
+\item 不要排结构体，因为排结构体到时候还要排回来。
+\item 线段树打时间戳不要memsize();
+\item 在严格小的限制下，第二维排序的时候一定要双关键字排序
+\item 这题是三维空间中，三个坐标都不减的最长链
+
+\end{itemize}
+\includecode[c++]{hdu4742.cpp}
+\end{multicols}
+\end{flushleft}
+\end{document} 
