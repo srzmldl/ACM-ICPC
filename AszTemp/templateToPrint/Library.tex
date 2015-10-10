@@ -55,7 +55,7 @@
 \tableofcontents
 \newpage
 \begin{multicols}{2}
-\chapter{ java}
+\chapter{ java TODO}
 \section{ 读写}
 \section{ 高精}
 
@@ -106,33 +106,139 @@
 \end{itemize}
 
 \includecode[c++]{cash.cpp}
+
+
+
+
 \chapter{ 图论}
-\section{ tarjan}
+\section{ tarjan  TODO}
 \subsection{ 2-sat}
-\subsection{ 割顶，点双联通分量}
-\subsection{ 桥，边双联通分量}
-\section{ 平面图}
-farmland那道题
-\section{网络流}
+如果没有产生矛盾,把处在同一个强联通分量中的点和边缩成一个点,得到新的有向图G'.然后,把G'中的所有弧反向,得到图G''.现在观察G'',由于已经进行了缩点操作,所以是拓扑图.
+
+把G''所以点标记未着色.按照拓扑顺序重复下面操作:
+1.选择未着色的顶点x.把x染成红色.
+2.把所有与x矛盾的顶点y及其子孙全部染成蓝色
+3.重复操作1和2,知道不存在未着色的点位置.此时G''中被染成红色的点在图G中对应的定点集合,就是2-SAT的一组解
+
+\includecode[c++]{cf568C.cpp}
+\subsection{ 割顶，点双联通分量 TODO}
+\begin{itemize}
+\item 每条边恰好属于一个双联通分量
+\item 不同双联通分量最多只有一个公共点,且一定是割顶
+\item 任意割顶都是至少两个不同双联通分量的公共点
+\end{itemize}
+\subsection{ 桥，边双联通分量 TODO}
+去掉桥之后求联通块即得边边双联通分量
+
+
+\section{ 平面图 TODO}
+farmland 那道题， 平面图判定hnoi
+\section{ 最佳追捕算法}
+\section{网络流 TODO}
 \subsection{ dinic}
-\subsection{ 费用流}
-\subsection{ 常见模型}
+\paragraph{ }
+uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些边的流量可以使得存在。
+\includecode[c++]{uva11248.cpp}
+\subsection{ 费用流 TODO}
+\subsection{ 常见模型 TODO}
 \section{弦图}
+\subsection{ 做法与常见问题}
+\paragraph{ }
+做法如下：
+\begin{itemize}
+\item  最大势算法求待验证完美消除序列\\
+     1. 未被选的点中选被标记次数最多的点i\\
+     2. 把i相邻的点标记次数＋1
+ \item  判断是否为完美消除序列（下述扫描必需全部完成）\\
+     1. 上述序列依次扫描，扫到i\\
+     2. 标号小于seq[i]的与i相邻点为j1,j2,...jk\\
+     3. 判断jk与j1,j2...jk-1相邻即可\\
+\end{itemize}
+\paragraph{ }
+常见问题如下：
+\begin{itemize}
+\item  色数：贪心按照完美消除序列产生顺序依次染最小的能染的颜色
+\item 最大独立集：贪心按照完美消除序列产生顺序倒着依次选，能选就选
+ \item 最小团覆盖（用最少的团覆盖所有点）：最大独立集带上下面的N集合
+  \item 极大团：
+  		\begin{itemize}
+  		
+    	\item N(v) = {w | w 与 v 相邻，且先加入}
+       \item 团一定是 v union N(v) 的形式
+      \item 现在需要判断每个v union N(v)是否为极大团
+     \item next[v]是与v相邻的,最靠近v的已经加入完美序列的点
+     \item next[w] = v 且|N(v)| + 1 <= |N(w)|,则v不是极大团
+    
+  		\end{itemize}
+  \item  最大团＝最小染色，最大点独立集＝最小团覆盖（对于弦图任何诱导子图成立，即完美图）
+  \item 区间图的完美消除序列就是右端点排序。从大到小依次加入完美消除序列。选最多区间不重叠：（最大独立集），从小到大排序依次加
+\end{itemize}
+
+\subsection{ 万不得已用线性作法}
+这个是判断是否为弦图
+\includecode[c++]{zoj1015.cpp}
+\subsection{ nlogn好写得多}
+这个是求色数
+\includecode[c++]{hnoi2008.cpp}
+
 \section{最小树形图}
+\paragraph{ }
+\begin{itemize}
+\item  特别注意判断root的地方.
+\item 下面这题是二分，选择大于等于bLowLim的边才有效
+\item 这是指定了root为0
+\item 不固定根的时候，只需要新加根节点。到每个点连边，边权大于所有边之和即可。
+\end{itemize}
+\includecode[c++]{uva11865.cpp}
+\section{二分图}
+\subsection{ 普通KM}
+\includecode[c++]{uva11383.cpp}
+\subsection{ 牛逼KM TODO}
+
+\subsection{ 常见问题汇总}
+\begin{itemize}
+\item 最大独立集: 等于顶点数减去最大匹配。最大匹配中点全部去掉，剩余的点为独立集。 此时共|V|-2|M|个点。接着从匹配边取一边加入独立集（这两个点不可能同时与非匹配点相邻，否则可以增广）。
+\item 最大团：补图的最大独立集
+\item 最小点覆盖: 即最大匹配。输出方案见代码
+\item 最小路径覆盖所有点
+\item DAG最小不相交路径覆盖:
+
+把原图中的每个点V拆成Vx和Vy，如果有一条有向边A->B，那么就加边Ax-By。 这样就得到了一个二分图，最小路径覆盖=原图的节点数-新图最大匹配。
+证明:一开始每个点都独立的为一条路径，总共有n条不相交路径。
+我们每次在二分图里加一条边就相当于把两条路径合成了一条路径，因为路径之间不能有公共点，所以加的边之间也不能有公共点，这就是匹配的定义。所以有：最小路径覆盖=原图的节点数-新图最大匹配。
+
+\item 有向无环图最小可相交路径覆盖:先用floyd求出原图的传递闭包，即如果a到b有路， 那么就加边a->b。然后就转化成了最小不相交路径覆盖问题。
+\item  稳定婚姻问题很有趣，见白书P353。
+\end{itemize}
+\subsection{ 最小点覆盖输出方案}
+\includecode[c++]{uva11419.cpp}
+\section{ 带花树 TODO}
+\section{ 最大团 TODO}
+\section{ 欧拉理论 TODO}
 
 
 \chapter{数据结构}
-\section{splay}
-\section{lct}
-\section{可持久化线段树}
+\section{ 左偏树 TODO}
+\section{splay TODO}
+\section{lct TODO}
+\section{可持久化线段树 以及LCA不能再写错了！！！}
+\paragraph{ }
+本题要求路径上k大
+\includecode[c++]{COT.cpp}
 \section{ 点分治}
-\section{ 树链剖分}
+\includecode[c++]{poj1741.cpp}
+\paragraph{ }
+树上A权值不超过lim的B权值和最大的路径
+\includecode[c++]{poj1741.cpp}
 
-\chapter{字符串}
-\section{ 后缀数组}
-\section{后缀自动机}
+\section{ 树链剖分 TODO}
+\section{ qtree TODO}
+
 
 \chapter{ 其他算法}
+\section{pq树 TODO}
+\section{ DLX TODO}
+\section{ 对抗搜索 TODO}
 \section{ cdq 分治与读入优化}
 \begin{itemize}
 
