@@ -55,10 +55,8 @@
 \tableofcontents
 \newpage
 \begin{multicols}{2}
-\chapter{ java TODO}
-\section{ 读写}
-\section{ 高精}
-
+\chapter{ java}
+\includecode[java]{Main.java}
 \chapter{ dp 优化}
 \section{ 决策单调性优化}
 \begin{itemize}
@@ -106,10 +104,6 @@
 \end{itemize}
 
 \includecode[c++]{cash.cpp}
-
-
-
-
 \chapter{ 图论}
 \section{ tarjan  TODO}
 \subsection{ 2-sat}
@@ -133,7 +127,15 @@
 
 \section{ 平面图 TODO}
 farmland 那道题， 平面图判定hnoi
+\section{pufer编码}
+\paragraph{}
+ 一棵标号树的Pufer编码规则如下：找到标号最小的叶子节点，输出与它相邻的节点到prufer 序列, 
+将该叶子节点删去，反复操作，直至剩余2个节点。
 \section{ 最佳追捕算法}
+\paragraph{ }
+	问题描述:逃犯若干,在公路网上流窜,最少派几名刑警,才能保证抓获全部逃犯.
+\paragraph{ }
+	做法:每次删除所有叶子,分一层.直到删除到只剩下一条链为止. 层数(算上一条链那层)就是答案.
 \section{网络流 TODO}
 \subsection{ dinic}
 \paragraph{ }
@@ -193,8 +195,8 @@ uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些�
 \section{二分图}
 \subsection{ 普通KM}
 \includecode[c++]{uva11383.cpp}
-\subsection{ 牛逼KM TODO}
-
+\subsection{ 牛逼KM}
+\includecode[c++]{poj3565Better.cpp}
 \subsection{ 常见问题汇总}
 \begin{itemize}
 \item 最大独立集: 等于顶点数减去最大匹配。最大匹配中点全部去掉，剩余的点为独立集。 此时共|V|-2|M|个点。接着从匹配边取一边加入独立集（这两个点不可能同时与非匹配点相邻，否则可以增广）。
@@ -212,7 +214,11 @@ uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些�
 \end{itemize}
 \subsection{ 最小点覆盖输出方案}
 \includecode[c++]{uva11419.cpp}
-\section{ 带花树 TODO}
+\section{ 带花树}
+\subsection{ 普通图最大匹配 }
+\includecode[c++]{ural1099.cpp}
+\subsection{ 普通图最优匹配}
+\includecode[c++]{uoj81.cpp}
 \section{ 最大团 TODO}
 \section{ 欧拉理论 TODO}
 

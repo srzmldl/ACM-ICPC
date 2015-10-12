@@ -103,8 +103,12 @@ int main()
 			w[i][j] = -1.0 * dist(a[i], b[j]);
 		
 		KM();
-		REPP(i, 1, n)
+        double ans = 0;
+		REPP(i, 1, n) {
 			printf("%d\n", match[i]);
+            ans += w[match[i]][i];
+        }
+        printf("%lf\n", ans);
 	}
 	return 0;
 }
