@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
-
+//依次加入数字作为点,向其约数连gcd大小的边,维护最大生成树
+//这里把边变成点,这样查询点更好做.
 const int MAXNODE = 11234567;
 const int INF = 11234567;
 const int MAXN = 112345;
 
 using namespace std;
 
-long long ANS, ans[MAXN];
+long long ANS = 0, ans[MAXN];
 
 struct node {
 	bool rev;
@@ -105,7 +106,7 @@ node *access(node *u) {
 	return v;
 }
 
-void evert(node *x) {
+void evert(node *x) { //换根
 	node *tmp = access(x);
 	makeRev(tmp);
 	splay(x);
@@ -127,7 +128,7 @@ void link(node *const x, node *const y) {
 	access(x);
 }
 
-void cut(node *x, node *y) {
+void cut(node *x, node *y) { //切断x到y的路径,从y相连的第一个点断开
 	if ((x == y) || (getRoot(x) != getRoot(y))) return ;
 	evert(x);
 	access(y);
@@ -145,6 +146,7 @@ void addEdge(int u, int v, int val) {
     if (rx == ry) {
 		evert(x);
         node *tmp = access(y);
+        
         node *delNode = tmp->minPos;
         if (delNode->val >= val) return ;
 		ANS -= 1LL * delNode->minVal;
@@ -158,16 +160,15 @@ void addEdge(int u, int v, int val) {
 }
 
 int main() {
-#ifdef HOME
-	//freopen("lct.in", "r", stdin);
-#endif // HOME
-
 	origin();
     for (int i = 1; i <= 100000; ++i) {
         tree[i] = newNode(INF);
 		if (i == 1) continue;
 		for (int j = 1; 1LL * j * j <= i; ++j)
-            if (i % j == 0) addEdge(i, j, j);
+        if (i % j == 0) {
+            addEdge(i, j, j);
+            if (j * j < i) addEdge(i, i/j, i/j);
+        }
         ans[i] = ANS;
     }
 	int n;
