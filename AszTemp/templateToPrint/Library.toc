@@ -20,7 +20,6 @@
 \contentsline {section}{\numberline {3.4}网络流}{17}
 \contentsline {subsection}{\numberline {3.4.1} dinic}{17}
 \contentsline {paragraph}{ }{17}
-\contentsline {subsection}{\numberline {3.4.2} 费用流}{19}
 \contentsline {section}{\numberline {3.5}弦图}{19}
 \contentsline {subsection}{\numberline {3.5.1} 做法与常见问题}{19}
 \contentsline {paragraph}{ }{19}
@@ -45,17 +44,18 @@
 \contentsline {chapter}{\numberline {4}数据结构}{36}
 \contentsline {section}{\numberline {4.1} kd-tree}{36}
 \contentsline {paragraph}{ }{36}
-\contentsline {section}{\numberline {4.2}可持久化线段树 以及LCA不能再写错了！！！}{37}
-\contentsline {paragraph}{ }{37}
-\contentsline {section}{\numberline {4.3} 点分治}{39}
-\contentsline {paragraph}{ }{40}
-\contentsline {chapter}{\numberline {5} 其他算法}{43}
-\contentsline {section}{\numberline {5.1}pq树}{43}
-\contentsline {paragraph}{ }{43}
-\contentsline {section}{\numberline {5.2} DLX}{45}
-\contentsline {subsection}{\numberline {5.2.1} 数独: 精确覆盖}{45}
+\contentsline {section}{\numberline {4.2}lct TODO}{37}
+\contentsline {section}{\numberline {4.3}可持久化线段树 以及LCA不能再写错了！！！}{39}
+\contentsline {paragraph}{ }{39}
+\contentsline {section}{\numberline {4.4} 点分治}{41}
+\contentsline {paragraph}{ }{42}
+\contentsline {chapter}{\numberline {5} 其他算法}{45}
+\contentsline {section}{\numberline {5.1}pq树}{45}
 \contentsline {paragraph}{ }{45}
-\contentsline {subsection}{\numberline {5.2.2} 可重复覆盖}{46}
-\contentsline {paragraph}{}{46}
-\contentsline {section}{\numberline {5.3} k短路}{47}
-\contentsline {section}{\numberline {5.4} cdq 分治与读入优化}{49}
+\contentsline {section}{\numberline {5.2} DLX}{47}
+\contentsline {subsection}{\numberline {5.2.1} 数独: 精确覆盖}{47}
+\contentsline {paragraph}{ }{47}
+\contentsline {subsection}{\numberline {5.2.2} 可重复覆盖}{48}
+\contentsline {paragraph}{}{48}
+\contentsline {section}{\numberline {5.3} k短路}{49}
+\contentsline {section}{\numberline {5.4} cdq 分治与读入优化}{51}

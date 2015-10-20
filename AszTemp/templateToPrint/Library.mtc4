@@ -1,6 +1,7 @@
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.1} kd-tree}{\reset@font\mtcSfont 36}}
 {\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode  }{\reset@font\mtcPfont 36}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.2}可持久化线段树 以及LCA不能再写错了！！！}{\reset@font\mtcSfont 37}}
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode  }{\reset@font\mtcPfont 37}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.3} 点分治}{\reset@font\mtcSfont 39}}
-{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode  }{\reset@font\mtcPfont 40}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.2}lct TODO}{\reset@font\mtcSfont 37}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.3}可持久化线段树 以及LCA不能再写错了！！！}{\reset@font\mtcSfont 39}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode  }{\reset@font\mtcPfont 39}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.4} 点分治}{\reset@font\mtcSfont 41}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode  }{\reset@font\mtcPfont 42}}
