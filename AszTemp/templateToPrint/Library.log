@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2015.9.6)  12 OCT 2015 18:21
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2015.9.6)  15 OCT 2015 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1258,15 +1258,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 53.
  [1] (./Library.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
-
 
 LaTeX Font Warning: Font shape `EU1/MicrosoftYaHei(0)/bx/n' undefined
-(Font)              using `EU1/MicrosoftYaHei(0)/m/n' instead on input line 4.
+(Font)              using `EU1/MicrosoftYaHei(0)/m/n' instead on input line 2.
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
 )
 \tf@toc=\write4
 \openout4 = `Library.toc'.
@@ -1292,18 +1291,22 @@ Chapter 2.
 Chapter 3.
 (./cf568C.cpp [10
 
-] [11]) [12] (./uva11248.cpp [13]) (./zoj1015.cpp [14]
-[15]) (./hnoi2008.cpp [16]) (./uva11865.cpp [17]) (./uva11383.cpp [18])
-(./poj3565Better.cpp [19]) [20] (./uva11419.cpp) [21] (./ural1099.cpp [22])
-(./uoj81.cpp [23] [24] [25] [26] [27]) [28]
+] [11]) (./poj2942.cpp [12] [13]) (./poj2942my.cpp [14])
+(./tarjan.cpp) [15] (./poj3694.cpp [16]) (./uva11248.cpp [17] [18])
+(./zoj1015.cpp [19] [20]) (./hnoi2008.cpp [21]) (./uva11865.cpp [22])
+(./uva11383.cpp [23]) (./poj3565Better.cpp [24]) (./uva11419.cpp [25])
+(./ural1099.cpp [26]) (./uoj81.cpp [27] [28] [29] [30] [31]) (./poj1041.cpp
+[32]) [33] (./poj3241.cpp [34]) [35]
 Chapter 4.
-(./COT.cpp [29
+(./hdu4347.cpp [36
 
-]) (./poj1741.cpp [30] [31]) (./poj1741.cpp [32]) [33]
+]) (./COT.cpp [37] [38]) (./poj1741.cpp [39]) (./poj1741.cpp
+[40]) [41] [42]
 Chapter 5.
-(./hdu4742.cpp [34
+(./cf243E.cpp [43
 
-] [35])
+]) [44] (./poj3074.cpp [45]) (./fzu1686.cpp [46])
+(./poj2449.cpp [47]) [48] (./hdu4742.cpp [49]) [50]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the Library.maf file.
@@ -1320,18 +1323,18 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the Library.log file.
 
-[36] (./Library.aux)
+[51] (./Library.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21254 strings out of 495484
- 412839 string characters out of 6183322
- 843837 words of memory out of 5000000
- 23985 multiletter control sequences out of 15000+600000
+ 21648 strings out of 495484
+ 417754 string characters out of 6183322
+ 880195 words of memory out of 5000000
+ 24346 multiletter control sequences out of 15000+600000
  7520 words of font info for 55 fonts, out of 8000000 for 9000
  102 hyphenation exceptions out of 8191
- 52i,7n,58p,10430b,1836s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,7n,58p,10430b,1858s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Library.pdf (38 pages).
+Output written on Library.pdf (53 pages).

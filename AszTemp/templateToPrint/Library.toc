@@ -7,51 +7,55 @@
 \contentsline {paragraph}{ }{7}
 \contentsline {subsection}{\numberline {2.3.2} 随便什么情况：cdq分治优化}{8}
 \contentsline {chapter}{\numberline {3} 图论}{10}
-\contentsline {section}{\numberline {3.1} tarjan TODO}{10}
+\contentsline {section}{\numberline {3.1} tarjan }{10}
 \contentsline {subsection}{\numberline {3.1.1} 2-sat}{10}
-\contentsline {subsection}{\numberline {3.1.2} 割顶，点双联通分量 TODO}{12}
-\contentsline {subsection}{\numberline {3.1.3} 桥，边双联通分量 TODO}{12}
-\contentsline {section}{\numberline {3.2} 平面图 TODO}{12}
-\contentsline {section}{\numberline {3.3}pufer编码}{12}
-\contentsline {paragraph}{}{12}
-\contentsline {section}{\numberline {3.4} 最佳追捕算法}{12}
+\contentsline {subsection}{\numberline {3.1.2} 割顶，点双联通分量}{12}
 \contentsline {paragraph}{ }{12}
-\contentsline {paragraph}{ }{12}
-\contentsline {section}{\numberline {3.5}网络流 TODO}{13}
-\contentsline {subsection}{\numberline {3.5.1} dinic}{13}
-\contentsline {paragraph}{ }{13}
-\contentsline {subsection}{\numberline {3.5.2} 费用流 TODO}{14}
-\contentsline {subsection}{\numberline {3.5.3} 常见模型 TODO}{14}
-\contentsline {section}{\numberline {3.6}弦图}{14}
-\contentsline {subsection}{\numberline {3.6.1} 做法与常见问题}{14}
-\contentsline {paragraph}{ }{14}
-\contentsline {paragraph}{ }{14}
-\contentsline {subsection}{\numberline {3.6.2} 万不得已用线性作法}{15}
-\contentsline {subsection}{\numberline {3.6.3} nlogn好写得多}{16}
-\contentsline {section}{\numberline {3.7}最小树形图}{17}
+\contentsline {subsection}{\numberline {3.1.3} 桥，边双联通分量}{16}
+\contentsline {section}{\numberline {3.2}pufer编码}{17}
+\contentsline {paragraph}{}{17}
+\contentsline {section}{\numberline {3.3} 最佳追捕算法}{17}
 \contentsline {paragraph}{ }{17}
-\contentsline {section}{\numberline {3.8}二分图}{18}
-\contentsline {subsection}{\numberline {3.8.1} 普通KM}{18}
-\contentsline {subsection}{\numberline {3.8.2} 牛逼KM}{19}
-\contentsline {subsection}{\numberline {3.8.3} 常见问题汇总}{20}
-\contentsline {subsection}{\numberline {3.8.4} 最小点覆盖输出方案}{21}
-\contentsline {section}{\numberline {3.9} 带花树}{22}
-\contentsline {subsection}{\numberline {3.9.1} 普通图最大匹配 }{22}
-\contentsline {subsection}{\numberline {3.9.2} 普通图最优匹配}{23}
-\contentsline {section}{\numberline {3.10} 最大团 TODO}{28}
-\contentsline {section}{\numberline {3.11} 欧拉理论 TODO}{28}
-\contentsline {chapter}{\numberline {4}数据结构}{29}
-\contentsline {section}{\numberline {4.1} 左偏树 TODO}{29}
-\contentsline {section}{\numberline {4.2}splay TODO}{29}
-\contentsline {section}{\numberline {4.3}lct TODO}{29}
-\contentsline {section}{\numberline {4.4}可持久化线段树 以及LCA不能再写错了！！！}{29}
-\contentsline {paragraph}{ }{29}
-\contentsline {section}{\numberline {4.5} 点分治}{30}
-\contentsline {paragraph}{ }{32}
-\contentsline {section}{\numberline {4.6} 树链剖分 TODO}{33}
-\contentsline {section}{\numberline {4.7} qtree TODO}{33}
-\contentsline {chapter}{\numberline {5} 其他算法}{34}
-\contentsline {section}{\numberline {5.1}pq树 TODO}{34}
-\contentsline {section}{\numberline {5.2} DLX TODO}{34}
-\contentsline {section}{\numberline {5.3} 对抗搜索 TODO}{34}
-\contentsline {section}{\numberline {5.4} cdq 分治与读入优化}{34}
+\contentsline {paragraph}{ }{17}
+\contentsline {section}{\numberline {3.4}网络流}{17}
+\contentsline {subsection}{\numberline {3.4.1} dinic}{17}
+\contentsline {paragraph}{ }{17}
+\contentsline {subsection}{\numberline {3.4.2} 费用流}{19}
+\contentsline {section}{\numberline {3.5}弦图}{19}
+\contentsline {subsection}{\numberline {3.5.1} 做法与常见问题}{19}
+\contentsline {paragraph}{ }{19}
+\contentsline {paragraph}{ }{19}
+\contentsline {subsection}{\numberline {3.5.2} 万不得已用线性作法}{19}
+\contentsline {subsection}{\numberline {3.5.3} nlogn好写得多}{21}
+\contentsline {section}{\numberline {3.6}最小树形图}{22}
+\contentsline {paragraph}{ }{22}
+\contentsline {section}{\numberline {3.7}二分图}{23}
+\contentsline {subsection}{\numberline {3.7.1} 普通KM}{23}
+\contentsline {subsection}{\numberline {3.7.2} 牛逼KM}{24}
+\contentsline {subsection}{\numberline {3.7.3} 常见问题汇总}{25}
+\contentsline {subsection}{\numberline {3.7.4} 最小点覆盖输出方案}{25}
+\contentsline {section}{\numberline {3.8} 带花树}{26}
+\contentsline {subsection}{\numberline {3.8.1} 普通图最大匹配 }{26}
+\contentsline {subsection}{\numberline {3.8.2} 普通图最优匹配}{28}
+\contentsline {section}{\numberline {3.9} 最大团}{32}
+\contentsline {section}{\numberline {3.10} 欧拉理论}{32}
+\contentsline {subsection}{\numberline {3.10.1} 注意事项}{32}
+\contentsline {subsection}{\numberline {3.10.2} 混合图欧拉回路构图}{33}
+\contentsline {section}{\numberline {3.11} 曼哈顿最小生成树}{34}
+\contentsline {chapter}{\numberline {4}数据结构}{36}
+\contentsline {section}{\numberline {4.1} kd-tree}{36}
+\contentsline {paragraph}{ }{36}
+\contentsline {section}{\numberline {4.2}可持久化线段树 以及LCA不能再写错了！！！}{37}
+\contentsline {paragraph}{ }{37}
+\contentsline {section}{\numberline {4.3} 点分治}{39}
+\contentsline {paragraph}{ }{40}
+\contentsline {chapter}{\numberline {5} 其他算法}{43}
+\contentsline {section}{\numberline {5.1}pq树}{43}
+\contentsline {paragraph}{ }{43}
+\contentsline {section}{\numberline {5.2} DLX}{45}
+\contentsline {subsection}{\numberline {5.2.1} 数独: 精确覆盖}{45}
+\contentsline {paragraph}{ }{45}
+\contentsline {subsection}{\numberline {5.2.2} 可重复覆盖}{46}
+\contentsline {paragraph}{}{46}
+\contentsline {section}{\numberline {5.3} k短路}{47}
+\contentsline {section}{\numberline {5.4} cdq 分治与读入优化}{49}

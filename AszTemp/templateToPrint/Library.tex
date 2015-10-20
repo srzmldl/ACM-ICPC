@@ -48,7 +48,7 @@
 
 \dominitoc[n]
 \title{ACM/ICPC Template}
-\author{AsZ VincentLDL}
+\author{QingyuZhang VincentLDL}
 \date{\today}
 \maketitle
 \setcounter{secnumdepth}{3}
@@ -105,7 +105,7 @@
 
 \includecode[c++]{cash.cpp}
 \chapter{ 图论}
-\section{ tarjan  TODO}
+\section{ tarjan }
 \subsection{ 2-sat}
 如果没有产生矛盾,把处在同一个强联通分量中的点和边缩成一个点,得到新的有向图G'.然后,把G'中的所有弧反向,得到图G''.现在观察G'',由于已经进行了缩点操作,所以是拓扑图.
 
@@ -113,20 +113,33 @@
 1.选择未着色的顶点x.把x染成红色.
 2.把所有与x矛盾的顶点y及其子孙全部染成蓝色
 3.重复操作1和2,知道不存在未着色的点位置.此时G''中被染成红色的点在图G中对应的定点集合,就是2-SAT的一组解
-
 \includecode[c++]{cf568C.cpp}
-\subsection{ 割顶，点双联通分量 TODO}
+\subsection{ 割顶，点双联通分量}
 \begin{itemize}
-\item 每条边恰好属于一个双联通分量
+\item 每条边与非割顶的点恰好属于一个双联通分量
 \item 不同双联通分量最多只有一个公共点,且一定是割顶
 \item 任意割顶都是至少两个不同双联通分量的公共点
+\item 求点双联通分支可以求割顶的时候顺便求出来
 \end{itemize}
-\subsection{ 桥，边双联通分量 TODO}
-去掉桥之后求联通块即得边边双联通分量
+\paragraph*{ }
+题目描述:n个骑士,m个敌对关系. 举办一次会议选奇数个人(不包括1个)坐在圆桌上. 相邻的人不仇恨就可以成功举办会议. 若某个骑士什么会议都不能参加,则踢走他.问最少踢走多少人.
+\paragraph{ }
+做法:找不能形成奇圈的点.理由如下:1.如果一个双连通分量内的某些顶点在一个奇圈中(即双连通分量含有奇圈),
+那么这个双连通分量的其他顶点也在某个奇圈中; 2. 如果一个双连通分量含有奇圈,则他必定不是一个二分图。反过来也成立,这是一个充要条件。 所以本题的做法,就是对补图求点双连通分量。然后对于求得的点双连通分量,使用染色法判断是不是二分图,不是二分图,这个双连通分量的点是可以存在的.
+\includecode[c++]{poj2942.cpp}
+我自己写的割顶
+\includecode[c++]{poj2942my.cpp}
+割顶的tarjan特别注意树根那个点.
+\includecode[c++]{tarjan.cpp}
+\subsection{ 桥，边双联通分量}
+\begin{itemize}
+\item  去掉桥之后求联通块即得边边双联通分量
+\item  桥不属于任何边双联通分支,其余边和每个定点都属于恰好一个边双联通分支.
+\item 构造边双联通图. 先求所有桥,删除桥边,剩余的连通块即为双联通子图,缩点,连回桥,变成树. 添加(leaf+1)/2条边即可. 每次选最近公共祖先最远的叶子连边. 注意判度数等于1的点的个数才是leaf,有时候根有特殊情况.
+\item 注意处理好重边
+\end{itemize}
+\includecode[c++]{poj3694.cpp}
 
-
-\section{ 平面图 TODO}
-farmland 那道题， 平面图判定hnoi
 \section{pufer编码}
 \paragraph{}
  一棵标号树的Pufer编码规则如下：找到标号最小的叶子节点，输出与它相邻的节点到prufer 序列, 
@@ -136,13 +149,12 @@ farmland 那道题， 平面图判定hnoi
 	问题描述:逃犯若干,在公路网上流窜,最少派几名刑警,才能保证抓获全部逃犯.
 \paragraph{ }
 	做法:每次删除所有叶子,分一层.直到删除到只剩下一条链为止. 层数(算上一条链那层)就是答案.
-\section{网络流 TODO}
+\section{网络流}
 \subsection{ dinic}
 \paragraph{ }
 uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些边的流量可以使得存在。
 \includecode[c++]{uva11248.cpp}
-\subsection{ 费用流 TODO}
-\subsection{ 常见模型 TODO}
+%\subsection{ 费用流}
 \section{弦图}
 \subsection{ 做法与常见问题}
 \paragraph{ }
@@ -219,14 +231,43 @@ uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些�
 \includecode[c++]{ural1099.cpp}
 \subsection{ 普通图最优匹配}
 \includecode[c++]{uoj81.cpp}
-\section{ 最大团 TODO}
-\section{ 欧拉理论 TODO}
+%\section{ 一些npc问题 TODO}
+\section{ 最大团}
+\begin{itemize}
+\item 度数和=2m
+\item 度数小于等于sqrt(2m)的为小点,否则大点
+\item 最大团包含小点,设为v0,则最大团$\in N(v_0)$
+\item 最大团只包含大点,大点个数sqrt(2m)级别
+\item 复杂度$O(2^{\sqrt{2m}}nm)$
+\end{itemize}
+%\subsection{ 最大独立集TODO}
+%\begin{itemize}
+%\item 复杂度 $O(1.3803^n)$
+%\end{itemize}
+\section{ 欧拉理论}
+\subsection{ 注意事项} 
+欧拉回路先判断连通，注意多连通块的孤立点要去掉.
+\includecode[c++]{poj1041.cpp}
+\subsection{ 混合图欧拉回路构图}
+	把该图的无向边随便定向，计算每个点的入度和出度。如果有某个点出入度之差为奇数，那么肯定不存在欧拉回路。因为欧拉回路要求每点入度 = 出度，也就是总度数为偶数，存在奇数度点必不能有欧拉回路。
+　　好了，现在每个点入度和出度之差均为偶数。那么将这个偶数除以2，得x。也就是说，对于每一个点，只要将x条边改变方向（入>出就是变入，出>入就是变出），就能保证出 = 入。如果每个点都是出 = 入，那么很明显，该图就存在欧拉回路。
+　　现在的问题就变成了：我该改变哪些边，可以让每个点出 = 入？构造网络流模型。首先，有向边是不能改变方向的，要之无用，删。一开始不是把无向边定向了吗？定的是什么向，就把网络构建成什么样，边长容量上限1。另新建s和t。对于入 > 出的点u，连接边(u, t)、容量为x，对于出 > 入的点v，连接边(s, v)，容量为x（注意对不同的点x不同）。之后，察看是否有满流的分配。有就是能有欧拉回路，没有就是没有。欧拉回路是哪个？查看流值分配，将所有流量非 0（上限是1，流值不是0就是1）的边反向，就能得到每点入度 = 出度的欧拉图。
+　　由于是满流，所以每个入 > 出的点，都有x条边进来，将这些进来的边反向，OK，入 = 出了。对于出 > 入的点亦然。那么，没和s、t连接的点怎么办？和s连接的条件是出 > 入，和t连接的条件是入 > 出，那么这个既没和s也没和t连接的点，自然早在开始就已经满足入 = 出了。那么在网络流过程中，这些点属于“中间点”。我们知道中间点流量不允许有累积的，这样，进去多少就出来多少，反向之后，自然仍保持平衡。
 
+
+\section{ 曼哈顿最小生成树}
+\paragraph*{ }
+本题描述: 二维平米那n个点,分成k个集合. 使得集合内部至少有两个点曼哈顿距离小于等于x,求最小的x.(实际上就是求曼哈顿最小生成树的k大边)
+\includecode[c++]{poj3241.cpp} 
 
 \chapter{数据结构}
-\section{ 左偏树 TODO}
-\section{splay TODO}
-\section{lct TODO}
+%\section{ 左偏树 TODO}
+\section{ kd-tree}
+\paragraph{ }
+求k维空间m近点对
+\includecode[c++]{hdu4347.cpp} 
+%\section{splay TODO}
+%\section{lct TODO}
 \section{可持久化线段树 以及LCA不能再写错了！！！}
 \paragraph{ }
 本题要求路径上k大
@@ -237,14 +278,31 @@ uva11248 流量大于等于C的流是否存在。如果不存在，修改哪些�
 树上A权值不超过lim的B权值和最大的路径
 \includecode[c++]{poj1741.cpp}
 
-\section{ 树链剖分 TODO}
-\section{ qtree TODO}
+%\section{ 树链剖分 TODO}
+%\section{ qtree TODO}
 
 
 \chapter{ 其他算法}
-\section{pq树 TODO}
-\section{ DLX TODO}
-\section{ 对抗搜索 TODO}
+\section{pq树}
+\paragraph{ }
+	题目. 一列一列得移动. 使得每一行的1连续
+	\includecode[c++]{cf243E.cpp}
+\section{ DLX}
+n行选若干行使得每一列一个1.
+\subsection{ 数独: 精确覆盖}
+ \paragraph{ }
+ \begin{itemize}
+ \item 9*9*9行,表示r行c列填数字k
+ \item 9*9*4列.分别表示r行有k,c列有k,t格子有k,r行c列有数字
+ \item 即转化成选若干行使得每一列有一个1的问题.
+ \end{itemize}
+ \includecode[c++]{poj3074.cpp}
+ \subsection{ 可重复覆盖}
+ \paragraph{}
+ 题目: n*m的01矩阵,1表示有怪物. 每次可以消灭n1*m1的矩阵内的东西. 最少多少次可以消灭所有怪物.
+ \includecode[c++]{fzu1686.cpp}
+\section{ k短路}
+\includecode[c++]{poj2449.cpp}
 \section{ cdq 分治与读入优化}
 \begin{itemize}
 
