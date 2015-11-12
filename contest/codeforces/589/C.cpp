@@ -6,95 +6,103 @@
 using namespace std;
 
 char st[MAXLEN];
-int a[MAXN], len, cntAll[MAXLEN][MAXLEN][30], cnt[30];
-ll g[MAXLEN][MAXLEN];
+int a[MAXN], len, cntAll[MAXLEN][30], cnt[30];
+ll g[100][200][30];
 
 int getPos(ll u) {
+    if (u == 0) return 0;
     ll x = 63 - __builtin_clzll(u);
    // cout << l << ' ' <<  (1LL << (63 - x)) << endl;
     ll bef = 1LL << x;
-    if (bef < u) return x + 1;
-    else return x;
+    if (bef == u) return x;
+    else return x + 1;
 }
 
-ll getAll(int l, int r) {
-    if (l > r) return 0;
-    else return g[l][r];
+int askLast100(int pr, int tot, int x) {
+    return g[pr][tot][x];
 }
 
-ll ask(ll rl, ll rr, int x) {
-    if (rl < 1) rl = 1;
-    if (rl > rr) return 0;
-    if (rr <= len) {
-        return 1LL * cntAll[rl][rr][x];
+ll ask(ll rr, int x, int pr) {
+    if (rr <= 0) return 0;
+    if (pr == 0) {
+        return 1LL * cntAll[rr][x];
     }
-    ll l = (rl - 1) / len + 1;
-    ll r = (rr - 1) / len + 1;
-    if (l > r) return 0;
-    int pl = getPos(l);
-    int pr = getPos(r);
-    ll tmp = getAll(pl + 1, pr - 1) * cnt[x];
-    if (pl < pr) {
-        tmp += ask(rl, (1LL << pl) * len, x);
-        rl = ((1LL << (pr - 1))) * len + 1;
-        pl = pr;
-    }
-    if (pl == pr && (rr == ((1LL << pr) * len)) && (rl == ((1LL << (pr - 1))) * len + 1)) {
-        tmp += getAll(pr, pr) * cnt[x];
-        return tmp;
-    }
-    //map l, r
     ll lenBef = (1LL << (pr - 1)) * len;
-    rl -= lenBef;
-    rr -= lenBef;
-    int k = a[pr] % lenBef;
-    rl -= k;
-    rr -= k;
-    if (rl >= 1) tmp += ask(1, rr, x) - ask(1, rl - 1, x);
-    else if (rr <= 0) tmp += ask(1, rr + lenBef, x) - ask(1, rl + lenBef - 1, x);
+    ll tmp;
+    ll allX = (1LL << (pr - 1)) * cntAll[len][x];
+    if (rr <= lenBef) return ask(rr, x, pr - 1);
     else {
-        tmp += (ask(1, rr, x) + ask(1, lenBef, x) - ask(1, rl + lenBef - 1, x));
+        tmp = allX;
+        rr -= lenBef;
+    }
+    int k = a[pr] % lenBef;
+    ll tl = 1 - k, tr = rr - k;
+    tl += lenBef;
+    if (tr >= 1) {
+        tmp += ask(tr, x, pr - 1);
+        tmp += askLast100(pr - 1, lenBef - tl + 1, x);
+    } else {
+        tr += lenBef;
+        tmp += (allX - ask(tl - 1, x, pr - 1) - askLast100(pr - 1, lenBef - tr, x));
     }
     return tmp;
 }
 
 void init() {
+    for (int i = 0; i < len; ++i) {
+        for (int j = 0; j < 26; ++j)
+            cntAll[i + 1][j] = cntAll[i][j];
+        cntAll[i + 1][st[i] - 'a'] = cntAll[i][st[i] - 'a'] + 1;
+    }
+}
+
+char stLast[31234];
+
+void initLast100() {
+    int lastLen = len;
     for (int i = 0; i < len; ++i)
-        cnt[st[i] - 'a']++;
-    for (int i = 1; i <= 63; ++i)
-        for (int j = 1; j <= 63; ++j)
-        {
-            g[i][j] = 0;
-            for (int k = i; k <= j; ++k)
-                g[i][j] += (1LL << (k - 1));
+        stLast[i] = st[i];
+    int flag = 0;
+    int lim = 6400;
+    if (lastLen >= lim) flag = 1;
+    for (int i = 0; i <= 64; ++i) {
+        for (int j = 1; j <= min(100, lastLen); ++j) {
+            for (int k = 0; k < 26; ++k)
+                g[i][j][k] = g[i][j - 1][k];
+            g[i][j][stLast[lastLen - j] - 'a'] = g[i][j - 1][stLast[lastLen - j] - 'a'] + 1;
         }
-    for (int i = 0; i < len; ++i)
-        for (int j = i; j < len; ++j) {
-            for (int k = i; k <= j; ++k)
-                cntAll[i + 1][j + 1][st[k] - 'a']++;
+        if (flag == 1) {
+            lastLen -= a[i + 1];
+        } else {
+            for (int j = 0; j < lastLen; ++j)
+                stLast[lastLen + (j + a[i + 1]) % lastLen] = stLast[j];
+            lastLen *= 2;
+            if (lastLen >= lim)
+                flag = 1;
         }
+    }
 }
 
 int main() {
-//#ifdef HOME
+#ifdef HOME
     freopen("C.in", "r", stdin);
-//#endif
+#endif
     scanf("%s", st);
     len = strlen(st);
     int n, m;
     scanf("%d%d", &n, &m);
     for (int i = 1; i <= n; ++i)
         scanf("%d", &a[i]);
-   // n = 100000;
-   // for (int i = 1; i <= n; ++i)
-     //   a[i] = 5;
+    initLast100();
     init();
     for (int i = 1; i <= m; ++i) {
         ll l, r;
         char c;
         scanf("%lld%lld %c\n", &l, &r, &c);
        // l = 1; r = 1e18;
-        cout << ask(1, r, c - 'a') - ask(1, l - 1, c - 'a') << endl;
+        ll pr = getPos((r - 1) / len + 1);
+        ll pl = (l - 1 >= 1 ? getPos((l - 1 - 1) / len + 1) : 0);
+        cout << ask(r, c - 'a', pr) - ask(l - 1, c - 'a', pl) << endl;
     }
     return 0;
 }

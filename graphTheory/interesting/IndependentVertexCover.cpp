@@ -9,9 +9,17 @@ typedef int arrayN[MAXN];
 
 arrayN a, minP;
 
+int min(int x, int y) {
+    int tmp = max(x, y);
+
+}
 int main() {
     freopen("in.txt", "r", stdin);
     int n;
+    int x = min(1, 2);
+    if (x == 1) {
+        x++;
+    }
     scanf("%d", &n);
     for (int i = 1; i <= n; ++i) {
         scanf("%d", &a[i]);
